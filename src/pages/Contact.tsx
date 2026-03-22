@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { siteConfig } from "@/lib/config";
 
 const interestOptions = ["Buying", "Selling", "Both", "Investment"];
 const timelineOptions = ["ASAP", "1-3 Months", "3-6 Months", "Just Exploring"];
@@ -11,9 +13,14 @@ const timelineOptions = ["ASAP", "1-3 Months", "3-6 Months", "Just Exploring"];
 const Contact = () => {
   const [form, setForm] = useState({ name: "", phone: "", email: "", interest: "", priceRange: "", timeline: "", message: "" });
 
+  useEffect(() => {
+    document.title = siteConfig.seo.contact.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", siteConfig.seo.contact.description);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! Sarah will be in touch within 24 hours.");
+    alert(`Thank you! ${siteConfig.agentName} will be in touch within 24 hours.`);
   };
 
   return (
@@ -24,17 +31,17 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
           <ScrollReveal animation="slide-right">
             <p className="text-gold font-medium text-sm uppercase tracking-[0.15em] mb-2">Get In Touch</p>
-            <h1 className="text-4xl md:text-5xl text-foreground leading-[1.1] mb-6">Let&apos;s Talk Real Estate</h1>
+            <h1 className="text-4xl md:text-5xl text-foreground leading-[1.1] mb-6">Let&apos;s Talk {siteConfig.industry}</h1>
             <p className="text-muted-foreground leading-relaxed mb-10">
               Whether you have a quick question or are ready to start your journey, I&apos;d love to hear from you. Fill out the form or reach out directly.
             </p>
 
             <div className="space-y-6">
               {[
-                { icon: Phone, label: "(555) 123-4567", href: "tel:+15551234567" },
-                { icon: Mail, label: "sarah@whitfieldrealty.com", href: "mailto:sarah@whitfieldrealty.com" },
-                { icon: MapPin, label: "412 Congress Ave, Suite 200, Austin, TX 78701" },
-                { icon: Clock, label: "Mon-Fri 9-6 · Sat 10-4 · Sun by appointment" },
+                { icon: Phone, label: siteConfig.phone, href: `tel:${siteConfig.phoneFull}` },
+                { icon: Mail, label: siteConfig.email, href: `mailto:${siteConfig.email}` },
+                { icon: MapPin, label: siteConfig.address.full },
+                { icon: Clock, label: siteConfig.officeHours.contactDisplay },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-gold-light flex items-center justify-center flex-shrink-0">

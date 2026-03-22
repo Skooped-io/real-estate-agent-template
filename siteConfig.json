@@ -1,0 +1,144 @@
+{
+  "businessName": "Whitfield Realty",
+  "agentName": "Sarah Whitfield",
+  "phone": "(555) 123-4567",
+  "phoneFull": "+15551234567",
+  "email": "sarah@whitfieldrealty.com",
+  "address": {
+    "street": "412 Congress Ave, Suite 200",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78701",
+    "full": "412 Congress Ave, Suite 200, Austin, TX 78701"
+  },
+  "serviceArea": "Greater Austin, TX",
+  "industry": "Real Estate",
+  "yearEstablished": "2011",
+  "licenseNumber": "",
+  "about": {
+    "intro": "For over 15 years, I've helped families across Austin find not just houses, but homes — places where memories are made and futures are built.",
+    "approach": "My approach is simple: listen first, act decisively, and always put my clients' interests ahead of everything else. Real estate is one of the biggest decisions you'll ever make, and I believe you deserve an agent who treats it that way.",
+    "personal": "When I'm not negotiating deals or previewing properties, you'll find me exploring Austin's food scene with my family, volunteering with Habitat for Humanity, or hiking the Barton Creek Greenbelt with our golden retriever, Biscuit.",
+    "credentials": [
+      "Top 1% Austin Realtors",
+      "500+ Families Served",
+      "Habitat for Humanity Volunteer",
+      "Certified Luxury Specialist"
+    ]
+  },
+  "officeHours": {
+    "weekday": "Mon – Fri: 9am – 6pm",
+    "saturday": "Saturday: 10am – 4pm",
+    "sunday": "Sunday: By appointment",
+    "contactDisplay": "Mon-Fri 9-6 · Sat 10-4 · Sun by appointment"
+  },
+  "stats": {
+    "yearsExperience": "15+",
+    "avgDaysOnMarket": "12",
+    "homesSoldThisYear": "47",
+    "clientSatisfaction": "98%"
+  },
+  "hero": {
+    "eyebrow": "Austin's Premier Real Estate",
+    "headline": "Find Your Dream Home",
+    "subheadline": "Buy. Sell. Invest. — Your trusted Austin real estate expert with 15+ years of local market knowledge.",
+    "ctaPrimary": "View Listings",
+    "ctaSecondary": "Sell My Home"
+  },
+  "services": [
+    { "title": "Buying", "desc": "Expert guidance from search to closing", "icon": "Home" },
+    { "title": "Selling", "desc": "Maximum value with strategic marketing", "icon": "TrendingUp" },
+    { "title": "Investment", "desc": "Data-driven investment property analysis", "icon": "Users" },
+    { "title": "Property Management", "desc": "Full-service tenant and asset management", "icon": "Shield" },
+    { "title": "Relocation", "desc": "Seamless moves into the Austin area", "icon": "MapPin" }
+  ],
+  "testimonials": [
+    {
+      "quote": "Sarah made selling our home and buying a new one feel completely stress-free. Her market knowledge is unmatched, and she truly cared about finding us the perfect fit.",
+      "name": "Michael & Lisa Torres",
+      "location": "Westlake Hills"
+    }
+  ],
+  "neighborhoods": [
+    { "name": "Westlake Hills", "desc": "Family-friendly luxury" },
+    { "name": "Downtown Austin", "desc": "Urban living at its finest" },
+    { "name": "Lake Travis", "desc": "Waterfront paradise" }
+  ],
+  "listings": [
+    { "price": "$1,275,000", "address": "2847 Barton Hills Dr, Austin, TX", "beds": 4, "baths": 3, "sqft": "3,240", "status": "Active" },
+    { "price": "$895,000", "address": "1506 Westover Rd, Austin, TX", "beds": 3, "baths": 2, "sqft": "2,180", "status": "Active" },
+    { "price": "$485,000", "address": "714 E 32nd St, Austin, TX", "beds": 3, "baths": 2, "sqft": "1,650", "status": "Pending" },
+    { "price": "$725,000", "address": "3201 S Lamar Blvd #204, Austin, TX", "beds": 2, "baths": 2, "sqft": "1,890", "status": "Active" },
+    { "price": "$1,450,000", "address": "9012 Balcones Dr, Austin, TX", "beds": 5, "baths": 4, "sqft": "4,100", "status": "Active" },
+    { "price": "$620,000", "address": "405 E Riverside Dr #312, Austin, TX", "beds": 2, "baths": 2, "sqft": "1,420", "status": "Sold" }
+  ],
+  "recentSales": [
+    { "address": "2847 Barton Hills Dr", "sold": "$1,310,000", "days": "8 days" },
+    { "address": "714 E 32nd St", "sold": "$502,000", "days": "5 days" }
+  ],
+  "sellerProcess": [
+    { "num": "01", "title": "Home Evaluation", "desc": "Free comprehensive market analysis to determine optimal pricing." },
+    { "num": "02", "title": "Preparation", "desc": "Staging advice, repairs, and professional photography to showcase your home." },
+    { "num": "03", "title": "Marketing Launch", "desc": "Multi-channel campaign including MLS, social, print, and open houses." },
+    { "num": "04", "title": "Offers & Negotiation", "desc": "Expert review of every offer with strategic counter-negotiation." },
+    { "num": "05", "title": "Closing", "desc": "Smooth transaction management through inspection, appraisal, and close." }
+  ],
+  "sellerDifferentiators": [
+    { "title": "Professional Photography", "desc": "HDR photos, drone aerials, and 3D virtual tours for every listing.", "icon": "Camera" },
+    { "title": "Data-Driven Pricing", "desc": "Comp analysis using 15+ market factors, not just square footage.", "icon": "BarChart3" },
+    { "title": "Targeted Marketing", "desc": "Custom campaigns reaching qualified buyers across digital and print.", "icon": "Megaphone" },
+    { "title": "White-Glove Service", "desc": "From staging to closing, I handle every detail so you don't have to.", "icon": "Handshake" }
+  ],
+  "buyerProcess": [
+    { "title": "Get Pre-Approved", "desc": "Connect with trusted lenders to understand your buying power and lock in the best rate.", "icon": "FileText" },
+    { "title": "Define Your Search", "desc": "We'll build your wish list — location, size, features, and lifestyle priorities.", "icon": "Search" },
+    { "title": "Tour & Compare", "desc": "Curated showings based on your criteria, with honest assessments of each property.", "icon": "Home" },
+    { "title": "Make an Offer", "desc": "Strategic offer preparation with competitive analysis to win in today's market.", "icon": "CheckSquare" },
+    { "title": "Close & Move In", "desc": "I manage inspections, appraisals, and closing logistics — you just pack.", "icon": "Key" }
+  ],
+  "firstTimeBuyerTips": [
+    "Start with pre-approval, not house hunting",
+    "Budget for closing costs (2-5% of purchase price)",
+    "Don't skip the home inspection",
+    "Think about resale value, even for your first home",
+    "Ask about property taxes, HOA fees, and insurance",
+    "Consider the commute and neighborhood at different times of day"
+  ],
+  "ctaSection": {
+    "headline": "Thinking About Making a Move?",
+    "subheadline": "Whether buying or selling, the first step is a conversation. Let's talk about your goals.",
+    "buttonText": "Schedule a Consultation"
+  },
+  "seo": {
+    "home": {
+      "title": "Sarah Whitfield | Real Estate Agent in Austin, TX",
+      "description": "Your trusted Austin real estate agent. Buying, selling & investment properties. 47+ homes sold. Free home valuations. Call (555) 123-4567.",
+      "h1": "Find Your Dream Home"
+    },
+    "about": {
+      "title": "About Sarah Whitfield | Austin, TX Real Estate",
+      "description": "Meet Sarah Whitfield — Austin's top real estate agent with 15+ years of experience helping families buy, sell, and invest in homes."
+    },
+    "listings": {
+      "title": "Austin Real Estate Listings | Whitfield Realty",
+      "description": "Browse current listings in Austin, TX. Find homes for sale in Westlake Hills, Downtown Austin, Lake Travis, and more."
+    },
+    "sellers": {
+      "title": "Sell Your Home in Austin | Whitfield Realty",
+      "description": "Get a free home valuation and sell your Austin home for top dollar with expert marketing and negotiation."
+    },
+    "buyers": {
+      "title": "Buy a Home in Austin | Whitfield Realty",
+      "description": "First-time or experienced buyer? Get expert guidance through every step of buying a home in Austin, TX."
+    },
+    "contact": {
+      "title": "Contact Sarah Whitfield | Austin Real Estate",
+      "description": "Schedule a free consultation with Sarah Whitfield. Call (555) 123-4567 or fill out our contact form."
+    }
+  },
+  "branding": {
+    "primaryColor": "216 55% 23%",
+    "secondaryColor": "42 45% 55%",
+    "accentColor": "147 50% 36%"
+  }
+}

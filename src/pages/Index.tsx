@@ -5,6 +5,8 @@ import PropertyCard from "@/components/PropertyCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Home, TrendingUp, Users, Shield, Clock, MapPin } from "lucide-react";
+import { siteConfig, getImage } from "@/lib/config";
+import { useEffect } from "react";
 
 import heroImage from "@/assets/hero-home.jpg";
 import agentPhoto from "@/assets/agent-photo.jpg";
@@ -16,49 +18,38 @@ import neighborhood1 from "@/assets/neighborhood-1.jpg";
 import neighborhood2 from "@/assets/neighborhood-2.jpg";
 import neighborhood3 from "@/assets/neighborhood-3.jpg";
 
-const listings = [
-  { image: listing1, price: "$1,275,000", address: "2847 Barton Hills Dr, Austin, TX", beds: 4, baths: 3, sqft: "3,240", status: "Active" as const },
-  { image: listing2, price: "$895,000", address: "1506 Westover Rd, Austin, TX", beds: 3, baths: 2, sqft: "2,180", status: "Active" as const },
-  { image: listing3, price: "$485,000", address: "714 E 32nd St, Austin, TX", beds: 3, baths: 2, sqft: "1,650", status: "Pending" as const },
-  { image: listing4, price: "$725,000", address: "3201 S Lamar Blvd #204, Austin, TX", beds: 2, baths: 2, sqft: "1,890", status: "Active" as const },
-];
+const listingImages = [listing1, listing2, listing3, listing4];
+const neighborhoodImages = [neighborhood1, neighborhood2, neighborhood3];
 
-const neighborhoods = [
-  { image: neighborhood1, name: "Westlake Hills", desc: "Family-friendly luxury" },
-  { image: neighborhood2, name: "Downtown Austin", desc: "Urban living at its finest" },
-  { image: neighborhood3, name: "Lake Travis", desc: "Waterfront paradise" },
-];
-
-const services = [
-  { icon: Home, title: "Buying", desc: "Expert guidance from search to closing" },
-  { icon: TrendingUp, title: "Selling", desc: "Maximum value with strategic marketing" },
-  { icon: Users, title: "Investment", desc: "Data-driven investment property analysis" },
-  { icon: Shield, title: "Property Management", desc: "Full-service tenant and asset management" },
-  { icon: MapPin, title: "Relocation", desc: "Seamless moves into the Austin area" },
-];
+const iconMap: Record<string, React.ElementType> = { Home, TrendingUp, Users, Shield, MapPin };
 
 const Index = () => {
+  useEffect(() => {
+    document.title = siteConfig.seo.home.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", siteConfig.seo.home.description);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src={heroImage} alt="Luxury home exterior at golden hour" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={getImage(null, 'hero', heroImage)} alt={`${siteConfig.businessName} - ${siteConfig.industry}`} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/60" />
         <div className="relative z-10 text-center px-6 max-w-3xl">
           <p className="text-gold font-sans font-medium text-sm uppercase tracking-[0.2em] mb-4 animate-fade-in" style={{ animationDelay: "200ms" }}>
-            Austin&apos;s Premier Real Estate
+            {siteConfig.hero.eyebrow}
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.05] mb-6 animate-fade-up" style={{ animationDelay: "400ms" }}>
-            Find Your Dream Home
+            {siteConfig.seo.home.h1}
           </h1>
           <p className="text-primary-foreground/80 text-lg md:text-xl max-w-xl mx-auto mb-8 font-sans animate-fade-up" style={{ animationDelay: "600ms" }}>
-            Buy. Sell. Invest. — Your trusted Austin real estate expert with 15+ years of local market knowledge.
+            {siteConfig.hero.subheadline}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "800ms" }}>
-            <Link to="/listings"><Button variant="gold" size="xl">View Listings</Button></Link>
-            <Link to="/sellers"><Button variant="hero-outline" size="xl">Sell My Home</Button></Link>
+            <Link to="/listings"><Button variant="gold" size="xl">{siteConfig.hero.ctaPrimary}</Button></Link>
+            <Link to="/sellers"><Button variant="hero-outline" size="xl">{siteConfig.hero.ctaSecondary}</Button></Link>
           </div>
         </div>
       </section>
@@ -78,9 +69,17 @@ const Index = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {listings.map((listing, i) => (
+            {siteConfig.listings.slice(0, 4).map((listing, i) => (
               <ScrollReveal key={i} delay={i * 100} animation="fade-up">
-                <PropertyCard {...listing} />
+                <PropertyCard
+                  image={getImage(null, `listing_${i + 1}`, listingImages[i % listingImages.length])}
+                  price={listing.price}
+                  address={listing.address}
+                  beds={listing.beds}
+                  baths={listing.baths}
+                  sqft={listing.sqft}
+                  status={listing.status as "Active" | "Pending" | "Sold"}
+                />
               </ScrollReveal>
             ))}
           </div>
@@ -92,21 +91,21 @@ const Index = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal animation="slide-right">
             <div className="relative">
-              <img src={agentPhoto} alt="Sarah Whitfield, Real Estate Agent" className="rounded-lg shadow-2xl w-full max-w-md" />
+              <img src={getImage(null, 'agent', agentPhoto)} alt={siteConfig.agentName} className="rounded-lg shadow-2xl w-full max-w-md" />
               <div className="absolute -bottom-6 -right-6 bg-gold rounded-lg p-5 shadow-lg hidden md:block">
-                <p className="font-serif text-2xl text-primary-foreground">15+</p>
+                <p className="font-serif text-2xl text-primary-foreground">{siteConfig.stats.yearsExperience}</p>
                 <p className="text-sm text-primary-foreground/80">Years Experience</p>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal animation="slide-left">
             <p className="text-gold font-medium text-sm uppercase tracking-[0.15em] mb-2">Your Agent</p>
-            <h2 className="text-3xl md:text-4xl text-foreground mb-6">Hi, I&apos;m Sarah Whitfield</h2>
+            <h2 className="text-3xl md:text-4xl text-foreground mb-6">Hi, I&apos;m {siteConfig.agentName}</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              With over 15 years navigating the Austin real estate market, I bring a rare combination of deep local knowledge, sharp negotiation skills, and genuine care for every client&apos;s unique journey.
+              {siteConfig.about.intro}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Whether you&apos;re buying your first home, selling a cherished property, or building an investment portfolio, I&apos;m here to make the process feel effortless. Let&apos;s find your next chapter together.
+              {siteConfig.about.approach}
             </p>
             <Link to="/about">
               <Button variant="outline" size="lg">
@@ -125,9 +124,9 @@ const Index = () => {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: "12", label: "Avg. Days on Market" },
-              { value: "47", label: "Homes Sold This Year" },
-              { value: "98%", label: "Client Satisfaction" },
+              { value: siteConfig.stats.avgDaysOnMarket, label: "Avg. Days on Market" },
+              { value: siteConfig.stats.homesSoldThisYear, label: "Homes Sold This Year" },
+              { value: siteConfig.stats.clientSatisfaction, label: "Client Satisfaction" },
             ].map((stat, i) => (
               <ScrollReveal key={i} delay={i * 150}>
                 <div className="text-center p-8 rounded-lg border border-primary-foreground/10">
@@ -146,19 +145,22 @@ const Index = () => {
           <ScrollReveal>
             <div className="text-center mb-16">
               <p className="text-gold font-medium text-sm uppercase tracking-[0.15em] mb-2">What I Offer</p>
-              <h2 className="text-3xl md:text-4xl text-foreground">Full-Service Real Estate</h2>
+              <h2 className="text-3xl md:text-4xl text-foreground">Full-Service {siteConfig.industry}</h2>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {services.map((service, i) => (
-              <ScrollReveal key={i} delay={i * 80}>
-                <div className="p-6 rounded-lg border border-border hover:border-gold/30 hover:shadow-md transition-all duration-300 text-center group">
-                  <service.icon className="w-8 h-8 text-gold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="font-serif text-lg text-foreground mb-2">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground">{service.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+            {siteConfig.services.map((service, i) => {
+              const IconComponent = iconMap[service.icon] || Home;
+              return (
+                <ScrollReveal key={i} delay={i * 80}>
+                  <div className="p-6 rounded-lg border border-border hover:border-gold/30 hover:shadow-md transition-all duration-300 text-center group">
+                    <IconComponent className="w-8 h-8 text-gold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="font-serif text-lg text-foreground mb-2">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -175,11 +177,11 @@ const Index = () => {
               ))}
             </div>
             <blockquote className="font-serif text-2xl md:text-3xl text-foreground leading-snug mb-8">
-              &ldquo;Sarah made selling our home and buying a new one feel completely stress-free. Her market knowledge is unmatched, and she truly cared about finding us the perfect fit.&rdquo;
+              &ldquo;{siteConfig.testimonials[0].quote}&rdquo;
             </blockquote>
             <div>
-              <p className="font-semibold text-foreground">Michael & Lisa Torres</p>
-              <p className="text-sm text-muted-foreground">Westlake Hills</p>
+              <p className="font-semibold text-foreground">{siteConfig.testimonials[0].name}</p>
+              <p className="text-sm text-muted-foreground">{siteConfig.testimonials[0].location}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -191,14 +193,14 @@ const Index = () => {
           <ScrollReveal>
             <div className="text-center mb-12">
               <p className="text-gold font-medium text-sm uppercase tracking-[0.15em] mb-2">Explore</p>
-              <h2 className="text-3xl md:text-4xl text-foreground">Austin Neighborhoods</h2>
+              <h2 className="text-3xl md:text-4xl text-foreground">{siteConfig.address.city} Neighborhoods</h2>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {neighborhoods.map((hood, i) => (
+            {siteConfig.neighborhoods.map((hood, i) => (
               <ScrollReveal key={i} delay={i * 120}>
                 <Link to="/listings" className="group block relative rounded-lg overflow-hidden aspect-[4/3]">
-                  <img src={hood.image} alt={hood.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src={getImage(null, `neighborhood_${i + 1}`, neighborhoodImages[i % neighborhoodImages.length])} alt={hood.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-6">
                     <h3 className="font-serif text-xl text-primary-foreground mb-1">{hood.name}</h3>
@@ -217,16 +219,39 @@ const Index = () => {
       <section className="py-24 bg-navy-deep section-padding">
         <div className="max-w-2xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl text-primary-foreground mb-4">Thinking About Making a Move?</h2>
+            <h2 className="text-3xl md:text-4xl text-primary-foreground mb-4">{siteConfig.ctaSection.headline}</h2>
             <p className="text-primary-foreground/60 mb-8 text-lg">
-              Whether buying or selling, the first step is a conversation. Let&apos;s talk about your goals.
+              {siteConfig.ctaSection.subheadline}
             </p>
             <Link to="/contact">
-              <Button variant="gold" size="xl">Schedule a Consultation</Button>
+              <Button variant="gold" size="xl">{siteConfig.ctaSection.buttonText}</Button>
             </Link>
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "name": siteConfig.businessName,
+            "telephone": siteConfig.phone,
+            "email": siteConfig.email,
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": siteConfig.address.street,
+              "addressLocality": siteConfig.address.city,
+              "addressRegion": siteConfig.address.state,
+              "postalCode": siteConfig.address.zip,
+            },
+            "areaServed": siteConfig.serviceArea,
+            "url": window.location.origin,
+          }),
+        }}
+      />
 
       <Footer />
     </div>
