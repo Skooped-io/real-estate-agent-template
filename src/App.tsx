@@ -9,6 +9,7 @@ import Listings from "./pages/Listings.tsx";
 import Sellers from "./pages/Sellers.tsx";
 import Buyers from "./pages/Buyers.tsx";
 import Contact from "./pages/Contact.tsx";
+import ServiceDetail from "./pages/ServiceDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/sellers" element={<Sellers />} />
           <Route path="/buyers" element={<Buyers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

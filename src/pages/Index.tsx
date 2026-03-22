@@ -5,7 +5,7 @@ import PropertyCard from "@/components/PropertyCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Home, TrendingUp, Users, Shield, Clock, MapPin } from "lucide-react";
-import { siteConfig, getImage } from "@/lib/config";
+import { siteConfig, getImage, slugify } from "@/lib/config";
 import { useEffect } from "react";
 
 import heroImage from "@/assets/hero-home.jpg";
@@ -153,11 +153,11 @@ const Index = () => {
               const IconComponent = iconMap[service.icon] || Home;
               return (
                 <ScrollReveal key={i} delay={i * 80}>
-                  <div className="p-6 rounded-lg border border-border hover:border-gold/30 hover:shadow-md transition-all duration-300 text-center group">
+                  <Link to={`/services/${slugify(service.title)}`} className="block p-6 rounded-lg border border-border hover:border-gold/30 hover:shadow-md transition-all duration-300 text-center group">
                     <IconComponent className="w-8 h-8 text-gold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="font-serif text-lg text-foreground mb-2">{service.title}</h3>
                     <p className="text-sm text-muted-foreground">{service.desc}</p>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               );
             })}
