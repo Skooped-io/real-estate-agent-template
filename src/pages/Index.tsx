@@ -5,7 +5,7 @@ import PropertyCard from "@/components/PropertyCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Home, TrendingUp, Users, Shield, Clock, MapPin } from "lucide-react";
-import { siteConfig, getImage } from "@/lib/config";
+import { siteConfig, getImage, slugify } from "@/lib/config";
 import { useEffect } from "react";
 
 import heroImage from "@/assets/hero-home.jpg";
