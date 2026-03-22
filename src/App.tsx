@@ -27,6 +27,7 @@ const App = () => (
           <Route path="/sellers" element={<Sellers />} />
           <Route path="/buyers" element={<Buyers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
