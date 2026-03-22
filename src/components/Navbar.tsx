@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/config";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -20,7 +21,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/50 shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6 lg:px-8">
         <Link to="/" className="font-serif text-xl tracking-tight text-foreground">
-          Whitfield <span className="text-gold">Realty</span>
+          {siteConfig.businessName.split(" ")[0]} <span className="text-gold">{siteConfig.businessName.split(" ").slice(1).join(" ")}</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -40,9 +41,9 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+15551234567" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a href={`tel:${siteConfig.phoneFull}`} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
             <Phone className="w-3.5 h-3.5" />
-            (555) 123-4567
+            {siteConfig.phone}
           </a>
           <Link to="/contact">
             <Button variant="gold" size="sm">Schedule Consultation</Button>
